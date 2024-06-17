@@ -139,11 +139,48 @@
                     adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aliquam eleifend
                     mi in nulla posuere sollicitudin aliquam ultrices sagittis. Posuere sollicitudin aliquam ultrices
                     sagittis orci a scelerisque purus. Amet consectetur adipiscing elit ut aliquam purus sit amet
-                    luctus. Quis blandit turpis cursus in hac habitasse platea dictumst.    </p>
+                    luctus. Quis blandit turpis cursus in hac habitasse platea dictumst. </p>
+            </div>
+            <div class="flex flex-col gap-2">
+                <p class="font-semibold text-regular underline">Review</p>
+                <textarea class="mt-[4px] bg-white p-[12px] placeholder:text-placeholder rounded w-full focus:outline-none
+                focus:ring-2 focus:ring-offset-2 focus:ring-gold focus:border-gold" placeholder="tulis review"
+                    rows="4"></textarea>
+                <div class="flex gap-1">
+                    <ion-icon class="text-gold w-5 h-5" name="star-outline" data-value="1"></ion-icon>
+                    <ion-icon class="text-gold w-5 h-5" name="star-outline" data-value="2"></ion-icon>
+                    <ion-icon class="text-gold w-5 h-5" name="star-outline" data-value="3"></ion-icon>
+                    <ion-icon class="text-gold w-5 h-5" name="star-outline" data-value="4"></ion-icon>
+                    <ion-icon class="text-gold w-5 h-5" name="star-outline" data-value="5"></ion-icon>
+                </div>
             </div>
         </div>
 
     </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const stars = document.querySelectorAll('ion-icon');
+            stars.forEach(star => {
+                star.addEventListener('click', (e) => {
+                    const value = e.target.getAttribute('data-value');
+                    updateStars(value);
+                    console.log(`Rating: ${value}`);
+                });
+            });
+        });
+
+        function updateStars(value) {
+            const stars = document.querySelectorAll('ion-icon');
+            stars.forEach(star => {
+                if (star.getAttribute('data-value') <= value) {
+                    star.setAttribute('name', 'star');
+                } else {
+                    star.setAttribute('name', 'star-outline');
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>
